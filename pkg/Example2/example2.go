@@ -2,8 +2,8 @@ package Example2
 
 import (
 	"context"
-	"fmt"
-        "github.com/srohatgi/graph"
+	"github.com/srohatgi/graph"
+	"log"
 )
 
 type Example2 struct {
@@ -20,11 +20,11 @@ func (e *Example2) WithSomethingElse(s string) *Example2 {
 
 func (e *Example2) Update(ctx context.Context) (string, error) {
 
-        fmt.Printf("Inside Example2 Update. Name: %s, ExampleDependency: %s, internalProperty: %s", e.Name, e.ExampleDependency, e.anotherInternalProperty)
+	log.Printf("Inside Example2 Update. Name: %s, ExampleDependency: %s, internalProperty: %s", e.Name, e.ExampleDependency, e.anotherInternalProperty)
 	return "", nil
 }
 
 func (e *Example2) Delete(ctx context.Context) error {
-	fmt.Println("Inside Example2 delete")
+	log.Println("Inside Example2 delete")
 	return nil
 }

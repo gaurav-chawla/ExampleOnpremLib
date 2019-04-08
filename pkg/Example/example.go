@@ -2,8 +2,8 @@ package example
 
 import (
 	"context"
-        "fmt"
 	"github.com/srohatgi/graph"
+	"log"
 )
 
 type Example struct {
@@ -23,15 +23,14 @@ func (e *Example) WithSomething(s string) *Example {
 }
 
 func (e *Example) Update(ctx context.Context) (string, error) {
-
-        fmt.Printf("inside update. Name: %s, image: %s, port: %d, internalProperty: %s", e.Name, e.Image, e.Port, e.internalProperty)
+	log.Printf("inside update. Name: %s, image: %s, port: %d, internalProperty: %s", e.Name, e.Image, e.Port, e.internalProperty)
 	e.ExampleReturn = "SampleReturn" // optional - only in case of dependency
 
 	return "", nil
 }
 
 func (e *Example) Delete(ctx context.Context) error {
-	
-        fmt.Println("inside delete")
-        return nil
+
+	log.Print("inside delete")
+	return nil
 }

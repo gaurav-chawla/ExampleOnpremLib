@@ -1,0 +1,20 @@
+apiVersion: ssc.splunk.com/v1
+kind: MaestroResource
+metadata:
+  labels:
+    maestro.request.environment: maestro-gchawla
+  name: example-2
+  namespace: user-gchawla
+  finalizers:
+  - finalizer.ssc.splunk.com
+spec: |
+  Example:
+  - name: testing
+    image: nginx
+    port: 80
+  Example2:
+  - name: dependencyExample
+    dependencies:
+    - fromresource: testing
+      fromfield: ExampleReturn
+      tofield: ExampleDependency
